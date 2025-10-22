@@ -1,0 +1,17 @@
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h1, h2 {
+    font-weight: bold;
+}
+
+
+.landing-img {
+    display: block;
+    margin: 0 auto;
+    width: 432px;
+}
