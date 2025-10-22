@@ -3,5 +3,6 @@
 :root {
   --background: hsla(0, 0%, 100%, 1);
   --foreground: hsla(0, 0%, 0%, 1);
+  --button-bg: hsla(33, 81%, 71%, 1);
 }
 
