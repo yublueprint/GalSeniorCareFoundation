@@ -28,7 +28,9 @@ header {
 .module-enter {
     display: block;
     margin: 0 auto;
+    border-radius: 16px;
     background-color: var(--button-bg);
+    border: 2px solid var(--button-bg);
     padding-top: 16px;
     padding-bottom: 16px;
     padding-left: 10px;
@@ -40,6 +42,10 @@ header {
 .module-enter:hover {
     cursor: pointer;
     background-color: hsla(33, 56%, 58%, 1);
+    border: 2px solid white;
     box-shadow: 2px 3px 5px hsla(33, 56%, 58%, 1);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease-in-out;
+    color:rgb(73, 73, 73);
+    transition: background-color 0.3s ease, 
+            box-shadow 0.3s ease-in-out, 
+            border 0.2s ease;
 }
