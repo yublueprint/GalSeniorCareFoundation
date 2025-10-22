@@ -24,3 +24,22 @@ header {
     width: 432px;
     padding: 16px;
 }
+
+.module-enter {
+    display: block;
+    margin: 0 auto;
+    background-color: var(--button-bg);
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight: 700;
+    box-shadow: 4px 5px 10px 0.5px hsla(33, 56%, 58%, 1);
+}
+
+.module-enter:hover {
+    cursor: pointer;
+    background-color: hsla(33, 56%, 58%, 1);
+    box-shadow: 2px 3px 5px hsla(33, 56%, 58%, 1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease-in-out;
+}

@@ -23,7 +23,7 @@ export default function Home() {
         <button
           className="module-enter"
         >
-          Go to Modules
+          Go to Modules 
         </button>
       </main>
       <footer>Created by</footer>
