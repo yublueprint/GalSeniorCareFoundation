@@ -1,17 +1,26 @@
 header {
+    margin-bottom: 1rem;
+}
+
+.title-text {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin: 8px;
+    font-weight: 600;
 }
 
-h1, h2 {
-    font-weight: bold;
+.title-text h1 {
+    font-size: 48px;
 }
 
-
+.title-text h2 {
+    font-size: 30px;
+}
 .landing-img {
     display: block;
     margin: 0 auto;
     width: 432px;
+    padding: 16px;
 }
