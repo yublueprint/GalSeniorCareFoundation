@@ -1,7 +1,3 @@
-header {
-    margin-bottom: 1rem;
-}
-
 .welcome-main {
     display: flex;
     flex-direction: column;
@@ -29,7 +25,7 @@ header {
     width: 745px;
     background-color: gray;
     display: flex;
-    margin-bottom: 60px;
+    margin-bottom: 40px;
     justify-content: center;
     align-items: center;
 }
