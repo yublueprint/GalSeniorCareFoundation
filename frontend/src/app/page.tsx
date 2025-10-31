@@ -7,19 +7,17 @@ export default function Home() {
       <header>
         logo
       </header>
-      <main>
+      <main className="welcome-main">
         <div className="title-text">
           <h2>Welcome to the</h2>
           <h1>Gal Senior Care Scam Simulator</h1>
         </div>
         
-        <Image 
-          className="landing-img"
-          src="/images/landing_page_img.png"
-          alt="Landing Page Image"
-          width={800}
-          height={600}
-        />
+        <div className="video-container">
+          {/* Placeholder for video */}
+          Video Placeholder
+        </div>
+
         <button
           className="module-enter"
         >
