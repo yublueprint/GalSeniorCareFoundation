@@ -35,7 +35,9 @@ export default function Home() {
             </svg>
         </button>
       </main>
-      <footer>Created by</footer>
+      <footer>
+        Created by
+      </footer>
     </>
   );
 }
