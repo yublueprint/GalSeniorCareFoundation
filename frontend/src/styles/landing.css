@@ -2,6 +2,12 @@ header {
     margin-bottom: 1rem;
 }
 
+.welcome-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
 .title-text {
     display: flex;
     flex-direction: column;
@@ -18,11 +24,14 @@ header {
 .title-text h2 {
     font-size: 30px;
 }
-.landing-img {
-    display: block;
-    margin: 0 auto;
-    width: 432px;
-    padding: 16px;
+.video-container {
+    height: 417px;
+    width: 745px;
+    background-color: gray;
+    display: flex;
+    margin-bottom: 60px;
+    justify-content: center;
+    align-items: center;
 }
 
 .module-enter {
