@@ -22,7 +22,7 @@ header {
 }
 
 .title-text h2 {
-    font-size: 30px;
+    font-size: 29px;
 }
 .video-container {
     height: 417px;
@@ -35,26 +35,35 @@ header {
 }
 
 .module-enter {
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: 22px;
     margin: 0 auto;
     border-radius: 16px;
     background-color: var(--button-bg);
-    border: 2px solid var(--button-bg);
     padding-top: 16px;
     padding-bottom: 16px;
     padding-left: 10px;
     padding-right: 10px;
-    font-weight: 700;
-    box-shadow: 4px 5px 10px 0.5px hsla(33, 56%, 58%, 1);
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 150%;
+    box-shadow: 4px 5px 0.5px hsla(33, 56%, 58%, 1);
+}
+
+
+.arrow-icon {
+    width: 32px;
+    height: 32px;
+    margin-top: 5px;
 }
 
 .module-enter:hover {
     cursor: pointer;
     background-color: hsla(33, 56%, 58%, 1);
-    border: 2px solid white;
-    box-shadow: 2px 3px 5px hsla(33, 56%, 58%, 1);
-    color:rgb(73, 73, 73);
-    transition: background-color 0.3s ease, 
-            box-shadow 0.3s ease-in-out, 
-            border 0.2s ease;
+
+    box-shadow: 2px 3px hsla(33, 56%, 58%, 1);
+    color:rgb(62, 62, 62);
+    transition: color 0.3s ease, background-color 0.3s ease, 
+            box-shadow 0.3s ease-in-out;
 }
