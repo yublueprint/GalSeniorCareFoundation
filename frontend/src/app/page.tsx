@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <>
       <header>
-        logo
+        <div className="logo-gal-placeholder"/> {/*TODO: replace placeholder with logo from firebase once schema/storage path confirmed*/}
       </header>
       <main className="welcome-main">
         <div className="title-text">
@@ -14,9 +14,10 @@ export default function Home() {
         </div>
         
         <div className="video-container">
-          {/* Placeholder for video */}
+          {/*TODO: replace placeholder with embedded video once content is finalized*/}
           Video Placeholder
         </div>
+        
 
         <button
           className="module-enter"
@@ -36,7 +37,9 @@ export default function Home() {
         </button>
       </main>
       <footer>
-        Created by
+        {/*TODO: replace placeholder with logo from firebase once schema/storage path confirmed*/}
+        Created By
+        <div className="logo-blueprint-placeholder"/>
       </footer>
     </>
   );
