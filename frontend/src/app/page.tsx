@@ -1,10 +1,15 @@
 import "../styles/landing.css";
-
+import Image from "next/image";
 export default function Home() {
   return (
     <>
       <header>
-        <div className="logo-gal-placeholder"/> {/*TODO: replace placeholder with logo from firebase once schema/storage path confirmed*/}
+        <Image
+          src="/GSC.svg"
+          alt="Gal Senior Care Logo"
+          width={127}
+          height={120}
+        />
       </header>
       <main className="welcome-main">
         <div className="title-text">
@@ -36,9 +41,14 @@ export default function Home() {
         </button>
       </main>
       <footer>
-        {/*TODO: replace placeholder with logo from firebase once schema/storage path confirmed*/}
         Created By
-        <div className="logo-blueprint-placeholder"/>
+        <Image
+          className="blueprint-logo"
+          src="/YUBlueprintLogo.png"
+          alt="YU Blueprint Logo"
+          width={34.17}
+          height={30.84}
+        />
       </footer>
     </>
   );

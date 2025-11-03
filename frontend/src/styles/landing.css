@@ -3,7 +3,7 @@ header {
     justify-content: left;
     align-items: center;
     height: 80px;
-    padding-left: 84px;
+    padding-left: 50px;
     padding-top: 23px;
 }
 footer {
@@ -37,7 +37,7 @@ footer {
     font-size: 29px;
 }
 .video-container {
-    height: 417px;
+    height: 390px;
     width: 745px;
     background-color: gray;
     display: flex;
@@ -79,17 +79,8 @@ footer {
             box-shadow 0.3s ease-in-out;
 }
 
-.logo-blueprint-placeholder {
-    width: 80px;
-    height: 80px;
-    background-color: lightgray;
+.blueprint-logo {
     margin-left: 8px;
-    margin-bottom: 23px;
-}
-
-.logo-gal-placeholder {
-    width: 100px;
-    height: 100px;
-    background-color: lightgray;
-    margin-top: 23px;
+    width: 34.17px;
+    height: 30.84px;
 }
