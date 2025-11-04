@@ -4,11 +4,12 @@ import * as Form from "@radix-ui/react-form";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { FormEvent } from "react";
+import { FormEvent, useState } from "react";
 
 const LoginPage = () => {
   const router = useRouter();
-  const { signIn, loading, error } = useAuth();
+  const { signIn, loading } = useAuth();
+  const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -21,6 +22,7 @@ const LoginPage = () => {
       await signIn(email, password);
       router.push("/");
     } catch (error) {
+      setError("Invalid email or password. Please try again.");
       console.error("Login failed:", error);
     }
   };

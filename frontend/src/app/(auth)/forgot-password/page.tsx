@@ -4,7 +4,7 @@ import * as Form from "@radix-ui/react-form";
 import Link from "next/link";
 import { FormEvent, useState } from "react";
 
-const LoginPage = () => {
+const ForgotPasswordPage = () => {
   const { sendPasswordResetEmail } = useAuth();
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -69,4 +69,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default ForgotPasswordPage;

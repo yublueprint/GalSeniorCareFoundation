@@ -3,16 +3,18 @@ import * as Form from "@radix-ui/react-form";
 import Link from "next/link";
 import { FormEvent, useEffect, useRef, useState } from "react";
 import { useAuth } from "@/context/AuthContext";
+import { AuthError } from "@/types/auth";
 
 const RESEND_COOLDOWN = 60;
 
 const SignUpPage = () => {
-  const { signUp, sendEmailVerification, loading, error } = useAuth();
+  const { signUp, sendEmailVerification, loading } = useAuth();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailSent, setEmailSent] = useState(false);
   const [resending, setResending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const [cooldownRemaining, setCooldownRemaining] = useState<number>(0);
   const intervalRef = useRef<number | null>(null);
@@ -67,8 +69,16 @@ const SignUpPage = () => {
       await sendEmailVerification();
       setEmailSent(true);
       startCooldown();
-    } catch (err) {
+    } catch (err: unknown) {
       console.error("Sign up failed:", err);
+      const error = err as AuthError;
+      if (error?.code === "auth/email-already-in-use") {
+        setError("An account with that email already exists.");
+      } else if (error?.code === "auth/weak-password") {
+        setError("Password should be at least 6 characters.");
+      } else {
+        setError("Invalid email format. Please enter a valid email.");
+      }
     }
   };
 
