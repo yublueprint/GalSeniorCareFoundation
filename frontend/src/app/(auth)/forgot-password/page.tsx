@@ -58,7 +58,7 @@ const LoginPage = () => {
             </button>
           </Form.Submit>
 
-          <Link href="/signup">
+          <Link href="/login">
             <button className="mt-4 w-full py-2 rounded-md border hover:bg-gray-100">
               Back to Log In
             </button>
