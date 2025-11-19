@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import React, { createContext, useContext, useEffect, useState } from 'react';
-import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from '../firebase/firebase';
-import { AuthContextType, AuthState } from '../types/auth';
-import * as authService from '../services/auth.service';
+import React, { createContext, useContext, useEffect, useState } from "react";
+import { onAuthStateChanged, updateProfile } from "firebase/auth";
+import { auth } from "../firebase/firebase";
+import { AuthContextType, AuthState } from "../types/auth";
+import * as authService from "../services/auth.service";
 
 const initialState: AuthState = {
   user: null,
@@ -45,16 +45,14 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const value: AuthContextType = {
     ...state,
-    signUp: async (email: string, password: string) => {
+    signUp: async (name: string, email: string, password: string) => {
       try {
-        setState((prev) => ({ ...prev, loading: true, error: null }));
-        await authService.signUp(email, password);
-   
+        const userCredential = await authService.signUp(email, password);
+        await updateProfile(userCredential.user, { displayName: name });
       } catch (error) {
         const errorMessage = (error as Error).message;
         setState((prev) => ({
           ...prev,
-          loading: false,
           error: errorMessage,
         }));
         throw error;
@@ -62,14 +60,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     },
     signIn: async (email: string, password: string) => {
       try {
-        setState((prev) => ({ ...prev, loading: true, error: null }));
         await authService.signIn(email, password);
-
       } catch (error) {
         const errorMessage = (error as Error).message;
         setState((prev) => ({
           ...prev,
-          loading: false,
           error: errorMessage,
         }));
         throw error;
@@ -77,14 +72,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     },
     signOut: async () => {
       try {
-        setState((prev) => ({ ...prev, loading: true, error: null }));
         await authService.signOut();
-
       } catch (error) {
         const errorMessage = (error as Error).message;
         setState((prev) => ({
           ...prev,
-          loading: false,
           error: errorMessage,
         }));
         throw error;
@@ -116,7 +108,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 export const useAuth = (): AuthContextType => {
   const context = useContext(AuthContext);
   if (context === undefined) {
-    throw new Error('useAuth must be used within an AuthProvider');
+    throw new Error("useAuth must be used within an AuthProvider");
   }
   return context;
 };

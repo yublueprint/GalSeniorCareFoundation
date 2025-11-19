@@ -6,9 +6,9 @@ import {
   sendPasswordResetEmail as firebaseSendPasswordResetEmail,
   UserCredential,
   User,
-} from 'firebase/auth';
-import { auth, actionCodeSettings } from '../firebase/firebase';
-import { AuthError } from '../types/auth';
+} from "firebase/auth";
+import { auth, actionCodeSettings } from "../firebase/firebase";
+import { AuthError } from "../types/auth";
 
 export const signUp = async (
   email: string,
@@ -42,7 +42,6 @@ export const signIn = async (
   }
 };
 
-
 export const signOut = async (): Promise<void> => {
   try {
     await firebaseSignOut(auth);
@@ -50,7 +49,6 @@ export const signOut = async (): Promise<void> => {
     throw error as AuthError;
   }
 };
-
 
 export const getCurrentUser = (): User | null => {
   return auth.currentUser;
@@ -60,7 +58,7 @@ export const sendEmailVerification = async (): Promise<void> => {
   try {
     const user = auth.currentUser;
     if (!user) {
-      throw new Error('No user is currently signed in');
+      throw new Error("No user is currently signed in");
     }
     await firebaseSendEmailVerification(user, actionCodeSettings);
   } catch (error) {

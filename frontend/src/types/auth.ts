@@ -1,4 +1,4 @@
-import { User as FirebaseUser } from 'firebase/auth';
+import { User as FirebaseUser } from "firebase/auth";
 
 export interface AuthState {
   user: FirebaseUser | null;
@@ -7,7 +7,7 @@ export interface AuthState {
 }
 
 export interface AuthContextType extends AuthState {
-  signUp: (email: string, password: string) => Promise<void>;
+  signUp: (name: string, email: string, password: string) => Promise<void>;
   signIn: (email: string, password: string) => Promise<void>;
   signOut: () => Promise<void>;
   sendEmailVerification: () => Promise<void>;
