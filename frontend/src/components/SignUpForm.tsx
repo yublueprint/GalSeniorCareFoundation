@@ -9,7 +9,7 @@ type Props = {
 };
 
 const SignUpForm = ({ onNeedVerify }: Props) => {
-  const { signUp, loading } = useAuth();
+  const { signUp } = useAuth();
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -101,10 +101,10 @@ const SignUpForm = ({ onNeedVerify }: Props) => {
           <Form.Submit asChild>
             <button
               type="submit"
-              disabled={!canSubmit || loading}
+              disabled={!canSubmit}
               className="mt-6 w-full py-2 rounded-md bg-[#f1bb79] shadow-[3px_3px_0_#d09a58] font-bold text-xl hover:bg-[#f1bb79]/85 disabled:opacity-80"
             >
-              {loading ? "Signing up..." : "Sign Up"}
+              Sign Up
             </button>
           </Form.Submit>
         </form>

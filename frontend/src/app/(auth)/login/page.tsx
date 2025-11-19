@@ -9,7 +9,7 @@ import { FormEvent, useState } from "react";
 
 const LoginPage = () => {
   const router = useRouter();
-  const { signIn, loading } = useAuth();
+  const { signIn } = useAuth();
   const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -81,10 +81,9 @@ const LoginPage = () => {
               <Form.Submit asChild>
                 <button
                   type="submit"
-                  disabled={loading}
                   className="mt-6 w-full py-2 rounded-md bg-[#f1bb79] shadow-[3px_3px_0_#d09a58] font-bold text-xl hover:bg-[#f1bb79]/85 disabled:opacity-60"
                 >
-                  {loading ? "Logging in..." : "Log In"}
+                  Log In
                 </button>
               </Form.Submit>
 
