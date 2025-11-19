@@ -1,4 +1,5 @@
 "use client";
+
 import { useAuth } from "@/context/AuthContext";
 import * as Form from "@radix-ui/react-form";
 import Image from "next/image";
@@ -23,67 +24,91 @@ const LoginPage = () => {
       router.push("/");
     } catch (error) {
       setError("Invalid email or password. Please try again.");
-      console.error("Login failed:", error);
     }
   };
 
   return (
-    <div className="flex flex-col items-center gap-4">
-      <div className="text-4xl font-bold">Log In</div>
-      <Image src="/loginpage.svg" alt="login" width={250} height={250} />
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="absolute left-6 top-6">
+        <Image src="/galLogo.svg" alt="galLogo" width={100} height={100} />
+      </div>
 
-      <Form.Root asChild>
-        <form className="w-full max-w-sm" onSubmit={handleSubmit}>
-          <Form.Field name="email" className="mb-4 flex flex-col">
-            <Form.Label className="text-2xl font-bold">Email</Form.Label>
-            <Form.Control asChild>
-              <input
-                name="email"
-                type="email"
-                required
-                className="border rounded-md h-10 px-3"
-              />
-            </Form.Control>
-          </Form.Field>
+      <main className="w-full px-4">
+        <div className="flex flex-col items-center gap-4">
+          <div className="text-4xl font-bold">Log In</div>
+          <Image src="/loginpage.svg" alt="login" width={250} height={250} />
 
-          <Form.Field name="password" className="flex flex-col">
-            <Form.Label className="text-2xl font-bold">Password</Form.Label>
-            <Form.Control asChild>
-              <input
-                name="password"
-                type="password"
-                required
-                className="border rounded-md h-10 px-3"
-              />
-            </Form.Control>
-          </Form.Field>
+          <Form.Root asChild>
+            <form className="w-full max-w-sm" onSubmit={handleSubmit}>
+              <Form.Field name="email" className="mb-4 flex flex-col">
+                <Form.Label className="text-md font-bold">
+                  Enter Email
+                </Form.Label>
+                <Form.Control asChild>
+                  <input
+                    name="email"
+                    type="email"
+                    required
+                    className="border rounded-md h-10 px-3"
+                  />
+                </Form.Control>
+              </Form.Field>
 
-          <Link href="/forgot-password" className="underline font-semibold">
-            Forgot your email or password?
-          </Link>
+              <Form.Field name="password" className="flex flex-col">
+                <Form.Label className="text-md font-bold">
+                  Enter Password
+                </Form.Label>
+                <Form.Control asChild>
+                  <input
+                    name="password"
+                    type="password"
+                    required
+                    className="border rounded-md h-10 px-3 mb-2"
+                  />
+                </Form.Control>
+              </Form.Field>
 
-          {/* Temporary error message display */}
-          {error && (
-            <div className="mt-3 text-sm text-red-600 font-bold">{error}</div>
-          )}
+              <Link href="/forgot-password" className="underline font-semibold">
+                Forgot your password?
+              </Link>
 
-          <Form.Submit asChild>
-            <button
-              type="submit"
-              disabled={loading}
-              className="mt-6 w-full py-2 rounded-md bg-[#f1bb79] shadow-[3px_3px_0_#d09a58] font-bold text-xl hover:bg-[#f1bb79]/85 disabled:opacity-60"
-            >
-              {loading ? "Logging in..." : "Log In"}
-            </button>
-          </Form.Submit>
+              {error && (
+                <div className="mt-3 text-sm text-red-600 font-bold">
+                  {error}
+                </div>
+              )}
 
-          <Link href="/signup">
-            <button className="mt-4 w-full py-2 rounded-md border hover:bg-gray-100">
-              Don&apos;t have an account? Sign Up
-            </button>
-          </Link>
-        </form>
-      </Form.Root>
+              <Form.Submit asChild>
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="mt-6 w-full py-2 rounded-md bg-[#f1bb79] shadow-[3px_3px_0_#d09a58] font-bold text-xl hover:bg-[#f1bb79]/85 disabled:opacity-60"
+                >
+                  {loading ? "Logging in..." : "Log In"}
+                </button>
+              </Form.Submit>
+
+              <Link href="/">
+                <button className="mt-4 w-full py-2 rounded-md border hover:bg-gray-100">
+                  Don&apos;t have an account? Sign Up
+                </button>
+              </Link>
+            </form>
+          </Form.Root>
+        </div>
+      </main>
+
+      <div className="absolute right-4 bottom-4 text-xl flex items-center gap-2 font-medium">
+        Created by{" "}
+        <Link href="https://yublueprint.org/">
+          <Image
+            src="/myblueprint.svg"
+            alt="myblueprint"
+            width={40}
+            height={20}
+          />
+        </Link>
+      </div>
     </div>
   );
 };
