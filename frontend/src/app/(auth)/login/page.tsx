@@ -52,6 +52,12 @@ const LoginPage = () => {
                     className="border rounded-md h-10 px-3"
                   />
                 </Form.Control>
+                <Form.Message
+                  match="valueMissing"
+                  className="text-sm text-red-600 mt-1 font-bold"
+                >
+                  Please enter your email address.
+                </Form.Message>
               </Form.Field>
 
               <Form.Field name="password" className="flex flex-col">
@@ -68,7 +74,10 @@ const LoginPage = () => {
                 </Form.Control>
               </Form.Field>
 
-              <Link href="/forgot-password" className="underline font-semibold">
+              <Link
+                href="/forgot-password"
+                className="cursor-pointer underline font-semibold"
+              >
                 Forgot your password?
               </Link>
 
@@ -81,14 +90,14 @@ const LoginPage = () => {
               <Form.Submit asChild>
                 <button
                   type="submit"
-                  className="mt-6 w-full py-2 rounded-md bg-[#f1bb79] shadow-[3px_3px_0_#d09a58] font-bold text-xl hover:bg-[#f1bb79]/85 disabled:opacity-60"
+                  className="cursor-pointer mt-6 w-full py-2 rounded-md bg-[#f1bb79] shadow-[3px_3px_0_#d09a58] font-bold text-xl hover:bg-[#f1bb79]/85 disabled:opacity-60"
                 >
                   Log In
                 </button>
               </Form.Submit>
 
               <Link href="/">
-                <button className="mt-4 w-full py-2 rounded-md border hover:bg-gray-100">
+                <button className="cursor-pointer mt-4 w-full py-2 rounded-md border hover:bg-gray-100">
                   Don&apos;t have an account? Sign Up
                 </button>
               </Link>

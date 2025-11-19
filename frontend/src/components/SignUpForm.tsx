@@ -102,7 +102,7 @@ const SignUpForm = ({ onNeedVerify }: Props) => {
             <button
               type="submit"
               disabled={!canSubmit}
-              className="mt-6 w-full py-2 rounded-md bg-[#f1bb79] shadow-[3px_3px_0_#d09a58] font-bold text-xl hover:bg-[#f1bb79]/85 disabled:opacity-80"
+              className="cursor-pointer mt-6 w-full py-2 rounded-md bg-[#f1bb79] shadow-[3px_3px_0_#d09a58] font-bold text-xl hover:bg-[#f1bb79]/85 disabled:opacity-80"
             >
               Sign Up
             </button>

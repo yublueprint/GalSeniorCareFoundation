@@ -25,7 +25,7 @@ const SignUpPage = () => {
           <p className="font-bold mb-8">Already have an account?</p>
           <Image src="/loginpage.svg" alt="landing" width={250} height={250} />
           <Link href="/login">
-            <button className="mt-10 py-2 px-4 rounded-md border w-full font-bold text-xl">
+            <button className="cursor-pointer mt-10 py-2 px-4 rounded-md border w-full font-bold text-xl">
               Log In
             </button>
           </Link>

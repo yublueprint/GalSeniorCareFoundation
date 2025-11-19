@@ -48,7 +48,7 @@ const ForgotPasswordPage = () => {
     try {
       await sendPasswordResetEmail(email);
       setMessage(
-        "An email has been sent to your inbox. Click the reset link provided."
+        "An email has been sent to your inbox. Click the reset link provided. If you don't see it, check your spam folder."
       );
       startTimer();
     } catch (error) {
@@ -104,7 +104,7 @@ const ForgotPasswordPage = () => {
               <Form.Submit asChild>
                 <button
                   type="submit"
-                  className="mt-40 w-full py-2 rounded-md bg-[#f1bb79] shadow-[3px_3px_0_#d09a58] font-bold text-xl hover:bg-[#f1bb79]/85 disabled:opacity-60"
+                  className="cursor-pointer mt-40 w-full py-2 rounded-md bg-[#f1bb79] shadow-[3px_3px_0_#d09a58] font-bold text-xl hover:bg-[#f1bb79]/85 disabled:opacity-60"
                   disabled={!email}
                 >
                   Reset

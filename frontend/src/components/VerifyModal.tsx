@@ -11,7 +11,7 @@ const RESENT_COOLDOWN = 59;
 
 export default function VerifyModal() {
   const router = useRouter();
-  const { sendEmailVerification } = useAuth();
+  const { sendEmailVerification, signOut } = useAuth();
   const [sending, setSending] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
   const [cooldown, setCooldown] = useState(0);
@@ -20,12 +20,19 @@ export default function VerifyModal() {
   const intervalRef = useRef<number | null>(null);
   const pollRef = useRef<number | null>(null);
 
+  const handleSignOut = async () => {
+    await signOut();
+    router.refresh();
+  };
+
   const handleSend = async () => {
     setSending(true);
     setMessage(null);
     try {
       await sendEmailVerification();
-      setMessage("Verification email sent. Please check your inbox.");
+      setMessage(
+        "Verification email sent. Please check your inbox. If you don't see it, check your spam folder."
+      );
       setCooldown(RESENT_COOLDOWN);
       setPolling(true);
     } catch (err) {
@@ -110,13 +117,20 @@ export default function VerifyModal() {
       <button
         onClick={handleSend}
         disabled={sending || cooldown > 0}
-        className="mt-8 w-sm py-2 rounded-md bg-[#f1bb79] shadow-[3px_3px_0_#d09a58] font-bold text-xl hover:bg-[#f1bb79]/85 disabled:opacity-80"
+        className="cursor-pointer mt-8 w-sm py-2 rounded-md bg-[#f1bb79] shadow-[3px_3px_0_#d09a58] font-bold text-xl hover:bg-[#f1bb79]/85 disabled:opacity-80"
       >
         {sending
           ? "Sending..."
           : cooldown > 0
           ? `Resend in ${cooldown}s`
           : "Click to Verify"}
+      </button>
+
+      <button
+        onClick={handleSignOut}
+        className="cursor-pointer mt-4 w-sm text-xl font-bold py-2 rounded-md border hover:bg-gray-100"
+      >
+        Log Out
       </button>
 
       <div className="absolute right-4 bottom-4 text-xl flex items-center gap-2 font-medium">
