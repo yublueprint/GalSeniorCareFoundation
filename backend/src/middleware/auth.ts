@@ -73,38 +73,3 @@ export const isAuthenticated = async (
     });
   }
 };
-
-/**
- * Middleware: ID token is optional
- * 
- * @param req The Express Request object + user data
- * @param res The Express Response object
- * @param next The Express NextFunction
- */
-export const isOptionallyAuthenticated = async (
-  req: AuthenticatedRequest,
-  res: Response,
-  next: NextFunction
-): Promise<void> => {
-  const idToken = extractBearerToken(req);
-
-  if (!idToken) {
-    return next();
-  }
-
-  try {
-    const decodedToken = await auth.verifyIdToken(idToken);
-
-    req.user = decodedToken;
-
-    next();
-  } catch (error) {
-    console.error("Optional token verification error:", error);
-    res.status(401).json({
-      success: false,
-      message: "Unauthorized. Invalid or expired token.",
-      data: {},
-      meta: {},
-    });
-  }
-};
