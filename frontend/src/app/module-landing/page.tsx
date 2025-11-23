@@ -37,7 +37,6 @@ export default function moduleLandingPage() {
                     rounded-md bg-[#f1bb79] 
                     shadow-[3px_3px_0_#d09a58] 
                     font-bold text-xl leading-[150%]
-                    shadow-[4px_5px_0.5px_hsla(33,_56%,_58%,_1)]
                     hover:bg-[#f1bb79]/85 disabled:opacity-60
                     transition-all duration-200
                     hover:shadow-[6px_7px_0.5px_hsla(33,_56%,_58%,1)]"
