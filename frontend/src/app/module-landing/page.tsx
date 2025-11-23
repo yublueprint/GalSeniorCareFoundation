@@ -7,7 +7,7 @@ import Link from "next/dist/client/link";
 
 export default function moduleLandingPage() {
     const router = useRouter();
-
+    {/* kh todo sunday morning, add ridirect for not logged in user */}
     return (
         <div className="min-h-screen flex items-center justify-center relative px-4">
               <div className="absolute left-6 top-6">
