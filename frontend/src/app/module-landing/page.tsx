@@ -29,6 +29,10 @@ export default function moduleLandingPage() {
         console.log("user detected, stay on page");
     }, [user, router]); //otherwise user is logged in and verified so stay on the page
 
+    const handleGoToModules = () => {
+        router.push("/"); //update after module page created
+    };
+
     return (
         <div className="min-h-screen flex items-center justify-center relative px-4">
               <div className="absolute left-6 top-6">
@@ -50,7 +54,8 @@ export default function moduleLandingPage() {
 
                 <Form.Submit asChild>
                     <button
-                    type="submit"
+                    onClick={handleGoToModules}
+                    type="button"
                     className="
                     flex items-center
                     gap-[22px]
