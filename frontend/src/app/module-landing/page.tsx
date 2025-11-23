@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import * as Form from "@radix-ui/react-form";
 import { FormEvent, use, useState } from "react";
 
@@ -15,14 +15,18 @@ export default function moduleLandingPage() {
     const { user } = useAuth();
     
     useEffect(() => {
-        if (user == undefined) return; //case 1, user is loading, so do nothing and avoid flashing
-
+        console.group("Check auth: ", user);
+        if (user == undefined){
+            console.log("loading");
+            return; //case 1, user is loading, so do nothing and avoid flashing
+        }
         if (!user) { 
+            console.log("no user detected, redirecting to main page");
             router.push("/"); //case 2, user has not been detected so redirect to main page
             return;
         }
 
-    
+        console.log("user detected, stay on page");
     }, [user, router]); //otherwise user is logged in and verified so stay on the page
 
     return (
