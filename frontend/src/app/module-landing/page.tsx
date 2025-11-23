@@ -16,16 +16,31 @@ export default function moduleLandingPage() {
         
             <main className="w-full max-w-2xl flex flex-col items-center text-center">
                 <div className="flex flex-col items-center justify-center mb-6">
-                    <h2>Welcome to the </h2> 
-                    <h1>Gal Senior Care Scam Simulator</h1>
+                    <h2 className="
+                    text-[26px] font-medium">
+                        Welcome to the </h2> 
+                    <h1 className="
+                    text-[45px] font-semibold">
+                        Gal Senior Care Scam Simulator</h1>
                 </div>
 
-                <div className="bg-zinc-500 w-70"/>
+                {/* TODO ADD VIDEO and replace placeholder */}
+                <div className="bg-zinc-500 w-[700px] h-[400px]"/>
 
                 <Form.Submit asChild>
                     <button
                     type="submit"
-                    className="cursor-pointer mt-6 w-60 py-2 rounded-md bg-[#f1bb79] shadow-[3px_3px_0_#d09a58] font-bold text-xl hover:bg-[#f1bb79]/85 disabled:opacity-60"
+                    className="
+                    flex items-center
+                    gap-[22px]
+                    cursor-pointer mt-6 w-60 py-4 px-8
+                    rounded-md bg-[#f1bb79] 
+                    shadow-[3px_3px_0_#d09a58] 
+                    font-bold text-xl leading-[150%]
+                    shadow-[4px_5px_0.5px_hsla(33,_56%,_58%,_1)]
+                    hover:bg-[#f1bb79]/85 disabled:opacity-60
+                    transition-all duration-200
+                    hover:shadow-[6px_7px_0.5px_hsla(33,_56%,_58%,1)]"
                     >   
                         Go to Modules
                     <svg 
