@@ -1,13 +1,30 @@
 'use client';
 import * as Form from "@radix-ui/react-form";
 import { FormEvent, use, useState } from "react";
+
+import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/context/AuthContext";
+import { auth } from "@/firebase/firebase";
+
 import Image from "next/image";
 import Link from "next/dist/client/link";
 
 export default function moduleLandingPage() {
     const router = useRouter();
-    {/* kh todo sunday morning, add ridirect for not logged in user */}
+    const { user } = useAuth();
+    
+    useEffect(() => {
+        if (user == undefined) return; //case 1, user is loading, so do nothing and avoid flashing
+
+        if (!user) { 
+            router.push("/"); //case 2, user has not been detected so redirect to main page
+            return;
+        }
+
+    
+    }, [user, router]); //otherwise user is logged in and verified so stay on the page
+
     return (
         <div className="min-h-screen flex items-center justify-center relative px-4">
               <div className="absolute left-6 top-6">
