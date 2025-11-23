@@ -9,21 +9,23 @@ export default function moduleLandingPage() {
     const router = useRouter();
 
     return (
-        <div className="min-h-screen flex items-center justify-center">
+        <div className="min-h-screen flex items-center justify-center relative px-4">
               <div className="absolute left-6 top-6">
                 <Image src="/galLogo.svg" alt="galLogo" width={100} height={100} />
               </div>
         
-              <main className="w-full px-4">
-                <h2>Welcome to the </h2> 
-                <h1>Gal Senior Care Scam Simulator</h1>
+            <main className="w-full max-w-2xl flex flex-col items-center text-center">
+                <div className="flex flex-col items-center justify-center mb-6">
+                    <h2>Welcome to the </h2> 
+                    <h1>Gal Senior Care Scam Simulator</h1>
+                </div>
 
-                <div className="video-container"/>
+                <div className="bg-zinc-500 w-70"/>
 
                 <Form.Submit asChild>
                     <button
                     type="submit"
-                    className="cursor-pointer mt-6 w-full py-2 rounded-md bg-[#f1bb79] shadow-[3px_3px_0_#d09a58] font-bold text-xl hover:bg-[#f1bb79]/85 disabled:opacity-60"
+                    className="cursor-pointer mt-6 w-60 py-2 rounded-md bg-[#f1bb79] shadow-[3px_3px_0_#d09a58] font-bold text-xl hover:bg-[#f1bb79]/85 disabled:opacity-60"
                     >   
                         Go to Modules
                     <svg 
@@ -39,7 +41,7 @@ export default function moduleLandingPage() {
                         </svg>
                     </button>
                 </Form.Submit>
-              </main>
+            </main>
 
             <div className="absolute right-4 bottom-4 text-xl flex items-center gap-2 font-medium">
                 Created by{" "}
