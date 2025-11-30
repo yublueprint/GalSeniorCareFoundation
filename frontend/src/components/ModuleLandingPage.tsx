@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import * as Form from "@radix-ui/react-form";
 
-const ModuleLanding = () => {
+const ModuleLandingPage = () => {
     const router = useRouter();
     const handleGoToModules = () => {
         router.push("/"); //update this after module page created
@@ -77,4 +77,4 @@ const ModuleLanding = () => {
     );
 }
 
-export default ModuleLanding;
+export default ModuleLandingPage;
