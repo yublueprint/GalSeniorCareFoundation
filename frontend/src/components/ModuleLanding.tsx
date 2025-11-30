@@ -1,16 +1,16 @@
-{/* TODO- Shift module here */}
 "use client";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import * as Form from "@radix-ui/react-form";
-import { FormEvent, use, useState } from "react";
 
-const moduleLanding = () => {
+const ModuleLanding = () => {
     const router = useRouter();
     const handleGoToModules = () => {
         router.push("/"); //update this after module page created
     };
+
+    //TODO ADD VIDEO and replace placeholder
 
     return (
         <div className="min-h-screen flex items-center justify-center relative px-4">
@@ -28,13 +28,13 @@ const moduleLanding = () => {
                         Gal Senior Care Scam Simulator</h1>
                 </div>
 
-                {/* TODO ADD VIDEO and replace placeholder */}
-                <div className="bg-zinc-500 w-[700px] h-[400px]"/>
+                
+                <div className="bg-zinc-500 w-[700px] h-[400px]"></div>
 
                 <Form.Submit asChild>
                     <button
                     onClick={handleGoToModules}
-                    type="button"
+                    type="submit"
                     className="
                     flex items-center
                     gap-[22px]
@@ -77,4 +77,4 @@ const moduleLanding = () => {
     );
 }
 
-export default moduleLanding;
+export default ModuleLanding;
