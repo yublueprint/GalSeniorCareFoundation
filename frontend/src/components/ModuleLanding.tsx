@@ -1,41 +1,13 @@
+{/* TODO- Shift module here */}
 "use client";
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import * as Form from "@radix-ui/react-form";
 import { FormEvent, use, useState } from "react";
 
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
-import { useAuth } from "@/context/AuthContext";
-
-import Image from "next/image";
-import Link from "next/dist/client/link";
-
-export default function moduleLandingPage() {
+const moduleLanding = () => {
     const router = useRouter();
-    const { user, loading } = useAuth();
-    
-    useEffect(() => {
-        console.group("Auth state:", {user, loading});
-        
-        if (loading){ //case 1, the page is loading so it does nothing
-            console.log("loading");
-            return;
-        }
-
-        if (!user) { 
-            console.log("no user detected, redirecting to main page");
-            router.push("/"); //case 2, user has not been detected so redirect to main page
-            return;
-        }
-
-        if (!user.emailVerified) {
-            console.log("user not verified, redirecting to verify page");
-            router.push("/"); //case 3, user not verified, return to main page to show verify modal
-            return;
-        }
-
-        console.log("user detected, stay on page");
-    }, [user, loading, router]); //otherwise user is logged in and verified so stay on the page
-
     const handleGoToModules = () => {
         router.push("/"); //update this after module page created
     };
@@ -104,3 +76,5 @@ export default function moduleLandingPage() {
         </div>
     );
 }
+
+export default moduleLanding;
