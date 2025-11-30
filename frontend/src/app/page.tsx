@@ -2,6 +2,7 @@
 
 import SignUpPage from "@/components/SignUpPage";
 import VerifyModal from "@/components/VerifyModal";
+import ModuleLandingPage from "@/components/ModuleLandingPage";
 import { useAuth } from "@/context/AuthContext";
 
 const LandingPage = () => {
@@ -19,7 +20,7 @@ const LandingPage = () => {
     return <VerifyModal />;
   }
 
-  return <div>Auth Landing</div>;
+  return <ModuleLandingPage />;
 };
 
 export default LandingPage;
