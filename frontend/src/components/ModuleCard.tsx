@@ -69,7 +69,7 @@ export default function ModuleCard({ module, onStartModule }: ModuleCardProps) {
       {/* Start/Continue Button */}
       <button
         onClick={() => onStartModule(module.id)}
-        className="w-full py-2 rounded-md bg-[#f1bb79] shadow-[3px_3px_0_#d09a58] font-bold text-lg hover:bg-[#f1bb79]/85 transition-colors flex items-center justify-center gap-2"
+        className="w-full py-2 rounded-md bg-[#f1bb79] shadow-[3px_3px_0_#d09a58] font-bold text-lg hover:bg-[#f1bb79]/85 transition-colors flex items-center justify-center gap-2 cursor-pointer"
       >
         {buttonText}
         <svg 
