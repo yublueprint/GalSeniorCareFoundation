@@ -3,7 +3,8 @@ import { useAuth } from "@/context/AuthContext";
 import * as Form from "@radix-ui/react-form";
 import Image from "next/image";
 import Link from "next/link";
-import { FormEvent, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
+import { FormEvent, useEffect, useRef, useState } from "react";
 
 const VALID_TIME = 60 * 60;
 
@@ -18,12 +19,23 @@ const formatTime = (secs: number) => {
 };
 
 const ForgotPasswordPage = () => {
-  const { sendPasswordResetEmail } = useAuth();
+  const router = useRouter();
+  const { sendPasswordResetEmail, user, loading } = useAuth();
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [timeLeft, setTimeLeft] = useState<number>(VALID_TIME);
   const [timerStarted, setTimerStarted] = useState(false);
   const timerRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    if (!loading && user) {
+      router.push("/");
+    }
+  }, [loading, router, user]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   const startTimer = (startFrom = VALID_TIME) => {
     if (timerRef.current) clearInterval(timerRef.current);

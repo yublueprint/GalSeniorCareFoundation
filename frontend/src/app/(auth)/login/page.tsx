@@ -5,12 +5,22 @@ import * as Form from "@radix-ui/react-form";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 
 const LoginPage = () => {
   const router = useRouter();
-  const { signIn } = useAuth();
+  const { signIn, user, loading } = useAuth();
   const [error, setError] = useState<string | null>(null);
+  
+  useEffect(() => {
+    if (user) {
+      router.push("/");
+    }
+  }, [router, user]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
