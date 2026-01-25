@@ -7,7 +7,7 @@ import * as Form from "@radix-ui/react-form";
 const ModuleLandingPage = () => {
     const router = useRouter();
     const handleGoToModules = () => {
-        router.push("/"); //update this after module page created
+        router.push("/modules");
     };
 
     //TODO ADD VIDEO and replace placeholder
