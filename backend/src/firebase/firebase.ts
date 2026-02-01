@@ -1,6 +1,7 @@
 import 'dotenv/config';
 import admin, { ServiceAccount } from 'firebase-admin';
 import { getAuth } from 'firebase-admin/auth';
+import { getFirestore } from 'firebase-admin/firestore';
 
 const serviceAccount = {
   type: process.env.TYPE,
@@ -20,6 +21,8 @@ const app = admin.initializeApp({
   credential: admin.credential.cert(serviceAccount as ServiceAccount),
   databaseURL: process.env.FIREBASE_DATABASE_URL,
 });
-const auth = getAuth(app);
 
-export { app, auth };
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+export { app, auth, db };
