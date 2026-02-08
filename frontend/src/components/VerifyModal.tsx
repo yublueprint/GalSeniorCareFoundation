@@ -95,9 +95,6 @@ export default function VerifyModal() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-4">
-      <div className="absolute left-6 top-6">
-        <Image src="/galLogo.svg" alt="galLogo" width={100} height={100} />
-      </div>
 
       <div className="shadow-lg p-12 max-w-md w-full text-center">
         <div className="flex justify-center mb-10">
