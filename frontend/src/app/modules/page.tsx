@@ -82,7 +82,7 @@ function ModulesPageContent() {
   };
 
   const handleBack = () => {
-    router.back();
+    router.push('/');
   };
 
   // Loading State
