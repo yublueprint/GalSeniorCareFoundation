@@ -14,7 +14,7 @@ const SignUpPage = () => {
   }
 
   return (
-    <div className="min-h-screen grid grid-cols-2">
+    <div className="h-full grid grid-cols-2">
 
       <div className="flex items-center text-center justify-center p-10 bg-[#f1bb79] rounded-r-xl">
         <div className="max-w-md">

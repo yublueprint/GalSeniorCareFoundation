@@ -38,9 +38,9 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
+    <div className="min-h-full flex items-center justify-center">
 
-      <main className="w-full px-4">
+      <main className="px-4">
         <div className="flex flex-col items-center gap-4">
           <div className="text-4xl font-bold">Log In</div>
           <Image src="/loginpage.svg" alt="login" width={250} height={250} />

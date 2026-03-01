@@ -13,7 +13,7 @@ const ModuleLandingPage = () => {
     //TODO ADD VIDEO and replace placeholder
 
     return (
-        <div className="min-h-screen relative px-4 py-4 flex justify-center">
+        <div className="h-full relative px-4 py-4 flex justify-center">
         
             <main className="w-full max-w-2xl flex flex-col items-center text-center">
                 <div className="flex flex-col items-center justify-center mb-6">
@@ -59,7 +59,7 @@ const ModuleLandingPage = () => {
                 </Form.Submit>
             </main>
 
-            <div className="absolute right-4 bottom-30 text-xl flex items-center gap-2 font-medium">
+            <div className="absolute right-4 bottom-4 text-xl flex items-center gap-2 font-medium">
                 Created by{" "}
                 <Link href="https://yublueprint.org/">
                     <Image

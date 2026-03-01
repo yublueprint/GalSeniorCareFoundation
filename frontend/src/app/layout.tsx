@@ -29,8 +29,12 @@ export default function RootLayout({
         className={`${inter.variable} antialiased`}
       >
         <AuthProvider>
-          <Header />
-          {children}
+          <div className="flex flex-col h-screen overflow-hidden">
+            <Header />
+            <div className="flex-1 overflow-auto h-full">
+              {children}
+            </div>
+          </div>
         </AuthProvider>
       </body>
     </html>

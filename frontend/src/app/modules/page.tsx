@@ -88,7 +88,7 @@ function ModulesPageContent() {
   // Loading State
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 p-4 md:p-8">
+      <div className="h-full bg-gray-50 p-4 md:p-8">
         <div className="max-w-7xl mx-auto">
           <div className="mb-8">
             <button
@@ -124,7 +124,7 @@ function ModulesPageContent() {
   // Error State
   if (error) {
     return (
-      <div className="min-h-screen bg-gray-50 p-4 md:p-8">
+      <div className="h-full bg-gray-50 p-4 md:p-8">
         <div className="max-w-7xl mx-auto">
           <div className="mb-8">
             <button
@@ -171,7 +171,7 @@ function ModulesPageContent() {
   // Empty State
   if (modules.length === 0) {
     return (
-      <div className="min-h-screen bg-gray-50 p-4 md:p-8">
+      <div className="h-full bg-gray-50 p-4 md:p-8">
         <div className="max-w-7xl mx-auto">
           <div className="mb-8">
             <button
@@ -213,7 +213,7 @@ function ModulesPageContent() {
 
   // Success State - Display Modules
   return (
-    <div className="min-h-screen bg-gray-50 p-4 md:p-8">
+    <div className="h-full bg-gray-50 p-4 md:p-8">
       <div className="max-w-7xl mx-auto">
         {/* Back Button */}
         <div className="mb-8">

@@ -69,7 +69,7 @@ const ForgotPasswordPage = () => {
   };
 
   return (
-    <div className="min-h-screen grid grid-cols-2">
+    <div className="h-full grid grid-cols-2">
       <div className="absolute top-6 right-6">
         <Image src="/galLogo.svg" alt="galLogo" width={100} height={100} />
       </div>

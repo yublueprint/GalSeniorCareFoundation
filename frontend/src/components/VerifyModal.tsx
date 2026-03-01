@@ -94,7 +94,7 @@ export default function VerifyModal() {
   }, [polling, router]);
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-4">
+    <div className="h-full flex flex-col items-center justify-center p-4">
 
       <div className="shadow-lg p-12 max-w-md w-full text-center">
         <div className="flex justify-center mb-10">
