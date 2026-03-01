@@ -5,6 +5,7 @@ export interface Module {
   progress: number;
   imageUrl?: string;
   isCompleted?: boolean;
+  objectives?: string[];
 }
 
 export interface ModuleCardProps {
