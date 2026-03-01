@@ -3,11 +3,12 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useAuth } from "@/context/AuthContext";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { ArrowLeftCircle, XCircle, Settings, UserCircle } from "lucide-react";
 
 export default function Header() {
   const router = useRouter();
+  const pathname = usePathname();
   const { user, signOut, loading } = useAuth();
 
   const handleGoToProfile = () => {
@@ -26,7 +27,9 @@ export default function Header() {
     router.push("/settings");
   };
 
-  if (loading || !user) return null;
+  const isModulePage = pathname.startsWith("/modules/");
+
+  if (loading || !user || isModulePage) return null;
 
   return (
     <header className="sticky top-0 z-50 flex items-center justify-between px-6 py-3 border-b bg-white">
