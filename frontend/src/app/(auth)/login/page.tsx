@@ -39,9 +39,6 @@ const LoginPage = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center">
-      <div className="absolute left-6 top-6">
-        <Image src="/galLogo.svg" alt="galLogo" width={100} height={100} />
-      </div>
 
       <main className="w-full px-4">
         <div className="flex flex-col items-center gap-4">
