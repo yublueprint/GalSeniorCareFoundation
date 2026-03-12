@@ -9,10 +9,10 @@ export interface AuthenticatedRequest extends Request {
 
 /**
  * Get only the token
- * 
+ *
  * @param req The Express Request object
  * @returns The token string if exists or null
- */ 
+ */
 const extractBearerToken = (req: Request): string | null => {
   const header = req.headers.authorization;
   if (header && header.startsWith("Bearer ")) {
@@ -23,7 +23,7 @@ const extractBearerToken = (req: Request): string | null => {
 
 /**
  * Middleware: Valid ID token is required
- * 
+ *
  * @param req The Express Request object + user data
  * @param res The Express Response object
  * @param next The Express NextFunction
@@ -31,7 +31,7 @@ const extractBearerToken = (req: Request): string | null => {
 export const isAuthenticated = async (
   req: AuthenticatedRequest,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ): Promise<void> => {
   const idToken = extractBearerToken(req);
 
