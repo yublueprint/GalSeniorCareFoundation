@@ -27,6 +27,6 @@ const app = admin.initializeApp({
 const auth = getAuth(app);
 const db = getFirestore(app);
 const storage = getStorage(app);
-const bucket = storage.bucket();
+const bucket = process.env.STORAGE_BUCKET ? storage.bucket() : null;
 
 export { app, auth, db, storage, bucket };

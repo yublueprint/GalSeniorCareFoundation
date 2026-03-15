@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import ModuleCard from '@/components/ModuleCard';
 import { Module } from '@/types/module';
 import ProtectedRoute from '@/components/ProtectedRoute';
+import { getCurrentUser } from '@/services/auth.service';
 
 function ModulesPageContent() {
   const router = useRouter();
@@ -16,55 +17,29 @@ function ModulesPageContent() {
     const fetchModules = async () => {
       try {
         setLoading(true);
-        // Sample data for now. We gotta replace with backend API
-        await new Promise(resolve => setTimeout(resolve, 1000)); 
+        const user = getCurrentUser();
+        if (!user) {
+          router.push('/login');
+          return;
+        }
+
+        const token = await user.getIdToken();
         
-        const mockModules: Module[] = [
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'}/modules`,
           {
-            id: '1',
-            title: 'Phishing Emails',
-            description: 'caption about phishing emails',
-            progress: 0,
-            isCompleted: false,
-          },
-          {
-            id: '2',
-            title: 'Bank Impersonations',
-            description: 'caption about phishing emails',
-            progress: 0,
-            isCompleted: false,
-          },
-          {
-            id: '3',
-            title: 'Charity Scams',
-            description: 'caption about phishing emails',
-            progress: 0,
-            isCompleted: false,
-          },
-          {
-            id: '4',
-            title: 'Computer Tech',
-            description: 'caption about phishing emails',
-            progress: 0,
-            isCompleted: false,
-          },
-          {
-            id: '5',
-            title: 'Fake Survey Scams',
-            description: 'caption about phishing emails',
-            progress: 0,
-            isCompleted: false,
-          },
-          {
-            id: '6',
-            title: 'Government Imposter Scam',
-            description: 'caption about phishing emails',
-            progress: 0,
-            isCompleted: false,
-          },
-        ];
-        
-        setModules(mockModules);
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch modules');
+        }
+
+        const data = await response.json();
+        setModules(data.data);
         setError(null);
       } catch (err) {
         setError('Failed to load modules. Please try again later.');
@@ -75,7 +50,7 @@ function ModulesPageContent() {
     };
 
     fetchModules();
-  }, []);
+  }, [router]);
 
   const handleStartModule = (moduleId: string) => {
     router.push(`/modules/${moduleId}`);
