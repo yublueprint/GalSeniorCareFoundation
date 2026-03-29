@@ -13,7 +13,7 @@ type Props = {
     <div>
       {/* Progress Bar */}
       <div className="flex justify-center"> 
-        <div className="w-[1344px] h-[13px] bg-[#D9D9D9] rounded-[22px] border border-[#A8A8A8]">
+        <div className="w-full h-[13px] bg-[#D9D9D9] rounded-[22px] border border-[#A8A8A8]">
           <div
             className="h-full bg-[#FBC176] rounded-[22px] transition-all "
             style={{ width: `${progress}%` }}

@@ -171,7 +171,7 @@ export default function QuizQuestion({
                       </div>
 
                       {/* Retry / Next button below modal */}
-                      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 w-full max-w-[1344px] px-6 z-[60] flex justify-end">                        {isCorrect ? (
+                      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 w-full px-6 z-[60] flex justify-end">                        {isCorrect ? (
                           <button
                           onClick={onNext}
                           className="
