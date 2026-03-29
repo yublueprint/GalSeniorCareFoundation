@@ -1,14 +1,14 @@
-import 'dotenv/config';
-import admin, { ServiceAccount } from 'firebase-admin';
-import { getAuth } from 'firebase-admin/auth';
-import { getFirestore } from 'firebase-admin/firestore';
-import { getStorage } from 'firebase-admin/storage';
+import "dotenv/config";
+import admin, { ServiceAccount } from "firebase-admin";
+import { getAuth } from "firebase-admin/auth";
+import { getFirestore } from "firebase-admin/firestore";
+import { getStorage } from "firebase-admin/storage";
 
 const serviceAccount = {
   type: process.env.TYPE,
   project_id: process.env.PROJECT_ID,
   private_key_id: process.env.PRIVATE_KEY_ID,
-  private_key: process.env.PRIVATE_KEY?.replace(/\\n/g, '\n'),
+  private_key: process.env.PRIVATE_KEY?.replace(/\\n/g, "\n"),
   client_email: process.env.CLIENT_EMAIL,
   client_id: process.env.CLIENT_ID,
   auth_uri: process.env.AUTH_URI,
@@ -20,7 +20,7 @@ const serviceAccount = {
 
 const app = admin.initializeApp({
   credential: admin.credential.cert(serviceAccount as ServiceAccount),
-  databaseURL: process.env.FIREBASE_DATABASE_URL,
+  projectId: process.env.PROJECT_ID,
   storageBucket: process.env.STORAGE_BUCKET,
 });
 

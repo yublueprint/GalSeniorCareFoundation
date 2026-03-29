@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
@@ -42,8 +42,8 @@ function ModulesPageContent() {
         setModules(data.data);
         setError(null);
       } catch (err) {
-        setError('Failed to load modules. Please try again later.');
-        console.error('Error fetching modules:', err);
+        setError("Failed to load modules. Please try again later.");
+        console.error("Error fetching modules:", err);
       } finally {
         setLoading(false);
       }
@@ -57,7 +57,7 @@ function ModulesPageContent() {
   };
 
   const handleBack = () => {
-    router.push('/');
+    router.push("/");
   };
 
   // Loading State
@@ -70,18 +70,33 @@ function ModulesPageContent() {
               onClick={handleBack}
               className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg shadow-md hover:bg-gray-50 transition-colors cursor-pointer"
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 19l-7-7 7-7"
+                />
               </svg>
               Back
             </button>
           </div>
-          
-          <h1 className="text-4xl font-bold mb-8 text-center">Pick a module!</h1>
-          
+
+          <h1 className="text-4xl font-bold mb-8 text-center">
+            Pick a module!
+          </h1>
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[1, 2, 3, 4, 5, 6].map((i) => (
-              <div key={i} className="bg-white rounded-lg shadow-md p-6 animate-pulse">
+              <div
+                key={i}
+                className="bg-white rounded-lg shadow-md p-6 animate-pulse"
+              >
                 <div className="w-full h-32 bg-gray-200 rounded-lg mb-4"></div>
                 <div className="h-4 bg-gray-200 rounded w-1/4 mb-2"></div>
                 <div className="h-6 bg-gray-200 rounded w-3/4 mb-2"></div>
@@ -106,29 +121,41 @@ function ModulesPageContent() {
               onClick={handleBack}
               className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg shadow-md hover:bg-gray-50 transition-colors cursor-pointer"
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 19l-7-7 7-7"
+                />
               </svg>
               Back
             </button>
           </div>
-          
+
           <div className="flex flex-col items-center justify-center min-h-[400px]">
             <div className="bg-red-50 border-2 border-red-200 rounded-lg p-8 max-w-md text-center">
-              <svg 
-                className="w-16 h-16 text-red-400 mx-auto mb-4" 
-                fill="none" 
-                stroke="currentColor" 
+              <svg
+                className="w-16 h-16 text-red-400 mx-auto mb-4"
+                fill="none"
+                stroke="currentColor"
                 viewBox="0 0 24 24"
               >
-                <path 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round" 
-                  strokeWidth={2} 
-                  d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" 
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
-              <h2 className="text-xl font-bold text-red-800 mb-2">Error Loading Modules</h2>
+              <h2 className="text-xl font-bold text-red-800 mb-2">
+                Error Loading Modules
+              </h2>
               <p className="text-red-600 mb-4">{error}</p>
               <button
                 onClick={() => window.location.reload()}
@@ -153,31 +180,44 @@ function ModulesPageContent() {
               onClick={handleBack}
               className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg shadow-md hover:bg-gray-50 transition-colors cursor-pointer"
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 19l-7-7 7-7"
+                />
               </svg>
               Back
             </button>
           </div>
-          
+
           <div className="flex flex-col items-center justify-center min-h-[400px]">
             <div className="bg-yellow-50 border-2 border-yellow-200 rounded-lg p-8 max-w-md text-center">
-              <svg 
-                className="w-16 h-16 text-yellow-400 mx-auto mb-4" 
-                fill="none" 
-                stroke="currentColor" 
+              <svg
+                className="w-16 h-16 text-yellow-400 mx-auto mb-4"
+                fill="none"
+                stroke="currentColor"
                 viewBox="0 0 24 24"
               >
-                <path 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round" 
-                  strokeWidth={2} 
-                  d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" 
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"
                 />
               </svg>
-              <h2 className="text-xl font-bold text-yellow-800 mb-2">No Modules Available</h2>
+              <h2 className="text-xl font-bold text-yellow-800 mb-2">
+                No Modules Available
+              </h2>
               <p className="text-yellow-700">
-                There are no training modules available at this time. Please check back later!
+                There are no training modules available at this time. Please
+                check back later!
               </p>
             </div>
           </div>
@@ -196,8 +236,18 @@ function ModulesPageContent() {
             onClick={handleBack}
             className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg shadow-md hover:bg-gray-50 transition-colors cursor-pointer"
           >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            <svg
+              className="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M15 19l-7-7 7-7"
+              />
             </svg>
             Back
           </button>
@@ -221,7 +271,10 @@ function ModulesPageContent() {
 
         {/* Module Count */}
         <div className="mt-8 text-center text-gray-600">
-          <p>Showing {modules.length} training module{modules.length !== 1 ? 's' : ''}</p>
+          <p>
+            Showing {modules.length} training module
+            {modules.length !== 1 ? "s" : ""}
+          </p>
         </div>
       </div>
     </div>
