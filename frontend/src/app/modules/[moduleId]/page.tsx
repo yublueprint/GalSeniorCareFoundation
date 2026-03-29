@@ -5,6 +5,12 @@ import { useRouter, useParams } from 'next/navigation';
 import { Module } from '@/types/module';
 import ModuleWelcomeScreen from '@/components/ModuleWelcomeScreen';
 import ProtectedRoute from '@/components/ProtectedRoute';
+import { getCurrentUser } from '@/services/auth.service';
+
+interface ModuleEntryResponse {
+  module: Module;
+  redirectTo: string;
+}
 
 function ModuleWelcomePageContent() {
   const router = useRouter();
@@ -15,93 +21,63 @@ function ModuleWelcomePageContent() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchModule = async () => {
-      setLoading(true);
-      await new Promise(resolve => setTimeout(resolve, 1000));
+    const fetchAndRedirect = async () => {
+      try {
+        setLoading(true);
+        const user = getCurrentUser();
+        if (!user) {
+          router.push('/login');
+          return;
+        }
 
-      // Sample data. Replace with backend API.
-      const mockModules: Module[] = [
-          {
-            id: '1',
-            title: 'Phishing Emails',
-            description: 'caption about phishing emails',
-            progress: 0,
-            isCompleted: false,
-            objectives: [
-              'first learning objective placeholder',
-              'second learning objective placeholder',
-              'third learning objective placeholder',
-            ],
-          },
-          {
-            id: '2',
-            title: 'Bank Impersonations',
-            description: 'caption about phishing emails',
-            progress: 0,
-            isCompleted: false,
-            objectives: [
-              'first learning objective placeholder',
-              'second learning objective placeholder',
-              'third learning objective placeholder',
-            ],
-          },
-          {
-            id: '3',
-            title: 'Charity Scams',
-            description: 'caption about phishing emails',
-            progress: 0,
-            isCompleted: false,
-            objectives: [
-              'first learning objective placeholder',
-              'second learning objective placeholder',
-              'third learning objective placeholder',
-            ],
-          },
-          {
-            id: '4',
-            title: 'Computer Tech',
-            description: 'caption about phishing emails',
-            progress: 0,
-            isCompleted: false,
-            objectives: [
-              'first learning objective placeholder',
-              'second learning objective placeholder',
-              'third learning objective placeholder',
-            ],
-          },
-          {
-            id: '5',
-            title: 'Fake Survey Scams',
-            description: 'caption about phishing emails',
-            progress: 0,
-            isCompleted: false,
-            objectives: [
-              'first learning objective placeholder',
-              'second learning objective placeholder',
-              'third learning objective placeholder',
-            ],
-          },
-          {
-            id: '6',
-            title: 'Government Imposter Scam',
-            description: 'caption about phishing emails',
-            progress: 0,
-            isCompleted: false,
-            objectives: [
-              'first learning objective placeholder',
-              'second learning objective placeholder',
-              'third learning objective placeholder',
-            ],
-          },
-        ];
+        const token = await user.getIdToken();
 
-      const found = mockModules.find(m => m.id === moduleId);
-      setModule(found || null);
-      setLoading(false);
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'}/modules/${moduleId}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        if (!response.ok) {
+          const errorData = await response.text();
+          console.error('Backend error:', response.status, errorData);
+          throw new Error(`Failed to fetch module: ${response.status}`);
+        }
+
+        const data = await response.json();
+        const moduleData: ModuleEntryResponse = data.data;
+
+        setModule(moduleData.module);
+
+        // Follow redirectTo logic
+        const redirectPath = moduleData.redirectTo;
+        if (redirectPath === 'welcome') {
+          // Stay on welcome screen
+        } else if (redirectPath === 'completed') {
+          router.push(`/modules/${moduleId}/completed`);
+        } else if (redirectPath.startsWith('slide/')) {
+          const slideId = redirectPath.split('/')[1];
+          router.push(`/modules/${moduleId}/slide/${slideId}`);
+        } else if (redirectPath.startsWith('quiz/')) {
+          // Extract quizId and questionId from "quiz/quizId/question/questionId"
+          const parts = redirectPath.split('/');
+          const quizId = parts[1];
+          const questionId = parts[3];
+          router.push(`/modules/${moduleId}/quiz/${quizId}/question/${questionId}`);
+        }
+      } catch (err) {
+        console.error('Error fetching module:', err);
+        // Fallback to showing the welcome screen if API call fails
+      } finally {
+        setLoading(false);
+      }
     };
 
-    fetchModule();
-  }, [moduleId]);
+    fetchAndRedirect();
+  }, [moduleId, router]);
 
   if (loading) return <div className="p-12 text-center">Loading module...</div>;
   
@@ -111,7 +87,7 @@ function ModuleWelcomePageContent() {
     <ModuleWelcomeScreen
       module={module}
       onBack={() => router.push('/modules')}
-      onNext={() => alert("This goes to the first quiz question!")}
+      onNext={() => alert("Redirecting to next step...")}
     />
   );
 }

@@ -1,11 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
-import ModuleCard from "@/components/ModuleCard";
-import { Module } from "@/types/module";
-import ProtectedRoute from "@/components/ProtectedRoute";
-import { auth } from "@/firebase/firebase";
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import ModuleCard from '@/components/ModuleCard';
+import { Module } from '@/types/module';
+import ProtectedRoute from '@/components/ProtectedRoute';
+import { getCurrentUser } from '@/services/auth.service';
 
 function ModulesPageContent() {
   const router = useRouter();
@@ -17,35 +17,29 @@ function ModulesPageContent() {
     const fetchModules = async () => {
       try {
         setLoading(true);
-
-        const user = auth.currentUser;
+        const user = getCurrentUser();
         if (!user) {
-          router.push("/login");
+          router.push('/login');
           return;
         }
 
         const token = await user.getIdToken();
-
+        
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/api/modules`,
+          `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'}/modules`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
-              "Content-Type": "application/json",
             },
-          },
+          }
         );
 
         if (!response.ok) {
-          if (response.status === 401) {
-            router.push("/login");
-            return;
-          }
-          throw new Error("Failed to fetch modules");
+          throw new Error('Failed to fetch modules');
         }
 
         const data = await response.json();
-        setModules(data);
+        setModules(data.data);
         setError(null);
       } catch (err) {
         setError("Failed to load modules. Please try again later.");
@@ -56,7 +50,7 @@ function ModulesPageContent() {
     };
 
     fetchModules();
-  }, []);
+  }, [router]);
 
   const handleStartModule = (moduleId: string) => {
     router.push(`/modules/${moduleId}`);
