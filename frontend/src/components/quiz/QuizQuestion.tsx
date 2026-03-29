@@ -95,24 +95,36 @@ export default function QuizQuestion({
                 const isSelected = selectedOption === index;
 
                 return (
+
                   <button
                     key={index}
                     onClick={() => handleOptionClick(index)}
-                    className={`
-                      w-full min-h-[72px] rounded-[12px] px-[12px] py-[24px] flex items-center gap-[18px] border
-                      ${answered && isSelected
-                        ? isCorrect
-                          ? "border-[#FBC176] bg-[#FFF8E7] border-2"
-                          : "border-[#FBC176] bg-[#FFF8E7] border-2"
-                        : "border-[#E0E0E0] hover:bg-gray-50"
-                      }
-                      ${showFeedback && isSelected ? "relative z-[50]" : ""}
-                    `}
-                  >
-                    <div
-                      className={`w-[22px] h-[22px] rounded-full flex-shrink-0 transition-all
-                        ${isSelected ? 'border-[3px] border-[#FBC176]' : 'border border-[#E0E0E0]'}`}
-                    />
+
+                    // selected state
+                    className={`group  w-full min-h-[72px] rounded-[12px] px-[12px] py-[24px] flex items-center gap-[18px] border transition-all
+          
+                    ${answered && isSelected
+                      ? "border-[#FBC176] bg-[#FFF8E7] border-2"
+                      : "border-[#E0E0E0] hover:border-[#FBC176]"
+                    }
+                  
+                    ${showFeedback && isSelected ? "relative z-[50]" : ""}
+                  `}
+                  > 
+
+                {/* circle bullet point design on select/hover */}
+                <div
+                  className={`
+                    w-[22px] h-[22px] rounded-full flex-shrink-0 transition-all
+
+                    ${
+                      isSelected
+                        ? 'border-[3px] border-[#FBC176]'
+                        : 'border border-[#E0E0E0] group-hover:border-[3px] group-hover:border-[#FBC176]'
+                    }
+                  `}
+                />
+
                     <span className="text-[20px] font-bold leading-[24px] text-[#121212] text-left">
                       {option.text}
                     </span>
