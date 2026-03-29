@@ -4,14 +4,6 @@ import { useState } from 'react';
 import QuizQuestion from '@/components/quiz/QuizQuestion';
 import { Question, Quiz } from '../../../../backend/src/types';
 
-const quiz : Quiz[] = [
-  {
-    id: 'quiz1',
-    moduleId: 'module1',
-    title: 'Banking & Financial Security Quiz'
-  }
-];
-
 const sampleQuestions: Question[] = [
   {
     id: '1',

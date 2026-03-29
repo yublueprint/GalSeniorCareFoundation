@@ -90,8 +90,8 @@ export default function QuizQuestion({
           <div className="flex gap-12 mt-8 flex-wrap">
 
             {/* LEFT — OPTIONS */}
-            <div className="flex flex-col gap-6 flex-1 min-w-[432px]">
-              {question.options.map((option, index) => {
+            <div className={`flex flex-col gap-6 ${question.scenarioImageUrl ? 'flex-1 min-w-[432px]' : 'w-full'}`}>
+               {question.options.map((option, index) => {
                 const isSelected = selectedOption === index;
 
                 return (
@@ -133,20 +133,21 @@ export default function QuizQuestion({
               })}
             </div>
 
-            {/* RIGHT — IMAGE + Pop-Up Modal */}
-            {question.scenarioImageUrl && (
-              <div className="flex-1 min-w-[850px] relative">
-                <img
-                  src={question.scenarioImageUrl}
-                  alt="Scenario"
-                  className="w-full h-auto object-cover rounded-[9px]"
-                />
+            <div className="flex-1 min-w-[850px] relative">
+              
+              {/* RIGHT — Scenario Image */}
+              {question.scenarioImageUrl && (
+                   <img
+                    src={question.scenarioImageUrl}
+                    alt="Scenario"
+                    className="w-full h-auto object-cover rounded-[9px]"
+                  /> 
+              )}
 
-                {/* Pop-Up Modal  */}
-                {showFeedback && selectedOption !== null && (
-                  <div className="absolute inset-0 flex items-center justify-center z-[50]">
+              {/* Pop-Up Modal  */}
+              {showFeedback && selectedOption !== null && (
+                <div className={`${question.scenarioImageUrl ? 'absolute inset-0 flex items-center justify-end pr-8' : 'fixed inset-0 flex items-center justify-center'}  z-[50]`}>                      
                     <div className="relative">
-
                       {/* Modal (incorrect/correct feedback) */}
                       <div className="w-[731px] h-[376px] bg-white rounded-[16px] shadow-xl p-8 flex items-center justify-center">        
                         <div className="flex flex-col items-center justify-center text-center gap-4">
@@ -242,12 +243,10 @@ export default function QuizQuestion({
                           </button>
                         )}
                       </div>
-
-                    </div> 
-                )}
+                      </div> 
+                  )} 
               </div>
-            )}
-          </div>
+           </div>
         </div>
       </div>
     </>

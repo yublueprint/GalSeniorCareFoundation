@@ -7,7 +7,7 @@ type Props = {
     questionsAnswered,
     totalQuestions,
   }: Props) {
-    const progress = (questionsAnswered / totalQuestions) * 100;
+    const progress = Math.round((questionsAnswered / totalQuestions) * 100);
   
     return (
     <div>
