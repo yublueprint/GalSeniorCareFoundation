@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import QuizQuestion from '@/components/quiz/QuizQuestion';
-import { Question, Quiz } from '../../../../backend/src/types';
+import { Question, Quiz } from '@backend/types';
 
 const sampleQuestions: Question[] = [
   {

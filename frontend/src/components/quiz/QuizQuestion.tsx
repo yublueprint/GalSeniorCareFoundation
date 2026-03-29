@@ -1,6 +1,6 @@
 'use client';
 
-import { Question } from '../../../../backend/src/types';
+import { Question } from '@backend/types';
 import QuizProgressBar from '@/components/quiz/QuizProgressBar';
 import { useState, useEffect } from "react";
 
